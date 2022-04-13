@@ -1,6 +1,6 @@
 import { GetServerSideProps, NextPage } from "next";
 
-const firstid = () => {
+const firstid: NextPage = () => {
   return <div>id:component</div>;
 };
 

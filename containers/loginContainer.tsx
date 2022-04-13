@@ -1,6 +1,7 @@
+import { NextPage } from "next";
 import Login from "../components/login";
 
-const loginContainer = () => {
+const loginContainer: NextPage = () => {
   return (
     <div>
       <Login />
