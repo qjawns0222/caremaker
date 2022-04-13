@@ -1,7 +1,7 @@
 import { NextPage } from "next";
 
 const make: NextPage = () => {
-  return <div>make</div>;
+  return <div>make:component</div>;
 };
 
 export default make;

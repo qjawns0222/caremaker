@@ -1,21 +1,19 @@
-import { NextPage } from "next";
-type ssd = {
-  props: {
-    id: String;
-  };
+import { GetServerSideProps, NextPage } from "next";
+import FirstidContainer from "../../../containers/form/firstform/id";
+const firstid = ({ id }: { id: String }) => {
+  console.log(id);
+  return (
+    <div>
+      <FirstidContainer />
+    </div>
+  );
 };
-type props = {
-  id: String;
-};
-const Ids: NextPage = (param: props) => {
-  const id = param.id;
-  return <div>id:{id}</div>;
-};
-export function getServerSideProps({ params: { id } }): ssd {
+export const getServerSideProps: GetServerSideProps = async ({ params }) => {
+  const id: String = params!.id as String;
   return {
     props: {
       id,
     },
   };
-}
-export default Ids;
+};
+export default firstid;
