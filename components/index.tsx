@@ -26,7 +26,7 @@ const Home: NextPage = () => {
           align-items: center;
           justify-content: center;
           padding: 95px;
-          background-color: purple;
+          background-color: #57648c;
         }
         .main > .title {
           font-weight: bolder;
@@ -39,7 +39,7 @@ const Home: NextPage = () => {
           color: orange;
         }
         .main > .image {
-          border: 4px solid purple;
+          border: 4px solid #57648c;
           border-radius: 50%;
           background-color: black;
           margin: 30px;
