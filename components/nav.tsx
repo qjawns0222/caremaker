@@ -30,6 +30,13 @@ const nav: NextPage = () => {
           </Link>
         </div>
       </div>
+      <div className="loginbar">
+        <div className="login">
+          <Link href="/login">
+            <a>{-1 > 0 ? "로그인" : "로그아웃"}</a>
+          </Link>
+        </div>
+      </div>
       <style jsx>
         {`
           .header {
@@ -39,6 +46,7 @@ const nav: NextPage = () => {
               rgb(187, 55, 125)
             );
             display: flex;
+            justify-content: space-around;
           }
           .header > .logo {
             width: 10%;
@@ -54,8 +62,18 @@ const nav: NextPage = () => {
           .header > .navbar > * {
             margin: 15px;
             font-weight: bolder;
-            font-size: 24px;
+            font-size: 20px;
             color: royalblue;
+          }
+          .header > .loginbar {
+            margin: 15px;
+            font-weight: bolder;
+            font-size: 20px;
+            color: royalblue;
+            width: 20%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
           }
         `}
       </style>
