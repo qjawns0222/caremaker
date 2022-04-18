@@ -3,11 +3,6 @@ import Image from "next/image";
 import data from "../carddata.json";
 
 const Home: NextPage = () => {
-  console.log(data.common.login);
-  {
-    data.common.login ? console.log("true") : console.log("false");
-  }
-
   return (
     <div>
       <div className="main">
