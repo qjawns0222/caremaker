@@ -6,12 +6,16 @@ const nav: NextPage = () => {
   return (
     <div className="header">
       <div className="logo">
-        <Image
-          src="https://raw.githubusercontent.com/qjawns0222/portfolio/main/img/%ED%8C%8C%EB%9E%80%EB%B6%88-%EB%A1%9C%EA%B3%A0.ico"
-          alt="logo"
-          width="70px"
-          height="70px"
-        />
+        <Link href="/">
+          <a>
+            <Image
+              src="https://raw.githubusercontent.com/qjawns0222/portfolio/main/img/%ED%8C%8C%EB%9E%80%EB%B6%88-%EB%A1%9C%EA%B3%A0.ico"
+              alt="logo"
+              width="70px"
+              height="70px"
+            />
+          </a>
+        </Link>
       </div>
       <div className="navbar">
         <div className="home">

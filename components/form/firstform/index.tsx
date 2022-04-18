@@ -41,11 +41,19 @@ const FirstForm: NextPage = () => {
             <textarea className="condesinput" placeholder="세부내용 작성" />
           </div>
         </div>
-        <input className="tagsinput" />
+        <input className="tagsinput" placeholder="#으로 태그를 구분해주세요" />
         <div className="tags">
           <div className="tag">예시</div>
           <div className="tag">예시</div>
           <div className="tag">예시</div>
+        </div>
+        <div className="buttons">
+          <div className="reset">
+            <button>초기화</button>
+          </div>
+          <div className="finish">
+            <button>완료</button>
+          </div>
         </div>
       </div>
       <style jsx>
@@ -56,6 +64,7 @@ const FirstForm: NextPage = () => {
             flex-direction: column;
             min-height: 900px;
             background-color: #f5b467;
+            width: 100%;
           }
           .section > .title {
             margin: 1%;
@@ -181,6 +190,38 @@ const FirstForm: NextPage = () => {
           }
           .section > .tags > .tag::before {
             content: "#";
+          }
+          .section > .buttons {
+            display: flex;
+            justify-content: center;
+            width: 90%;
+            max-width: 350px;
+          }
+          .section > .buttons > * {
+            width: 200px;
+          }
+          .section > .buttons > * > * {
+            font-weight: bolder;
+            font-size: 28px;
+            margin: 5%;
+            max-width: 100%;
+            padding: 5%;
+
+            border-radius: 12px;
+          }
+          .section > .buttons > .finish {
+            display: flex;
+            justify-content: end;
+          }
+          .section > .buttons > .reset > * {
+            background-color: yellow;
+            border: 1px solid;
+          }
+          .section > .buttons > .finish > * {
+            background-color: #6856f8;
+            border: 1px solid;
+            display: flex;
+            justify-content: end;
           }
         `}
       </style>

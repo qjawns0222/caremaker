@@ -1,7 +1,5 @@
-import { NextComponentType } from "next";
 import { AppProps } from "next/app";
 import NavContainer from "../containers/navcontainer";
-import Image from "next/image";
 
 const App = ({ Component, pageProps }: AppProps) => {
   return (
