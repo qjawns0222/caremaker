@@ -4,7 +4,7 @@
       "idx": "1",
       "currentform": "first",
       "maker": "admin",
-      "text": [
+      "text": 
         {
           "title": "노래방",
           "date": "2022.04.17",
@@ -13,7 +13,7 @@
           "content": "노래방 ㄱㄱ",
           "tags": "[놀자,놀자,놀자]"
         }
-      ]
+      
     }
   ],
   "common": {
