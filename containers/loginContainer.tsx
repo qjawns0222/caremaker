@@ -1,10 +1,12 @@
 import { NextPage } from "next";
 import Login from "../components/login";
+import { js } from "../type";
 
-const loginContainer: NextPage = () => {
+const loginContainer = ({ data }: { data: js }) => {
+  const name = "권범준";
   return (
     <div>
-      <Login />
+      <Login name={name} data={data} />
     </div>
   );
 };

@@ -1,21 +1,14 @@
 import type { GetServerSideProps, NextPage } from "next";
+import { useEffect, useState } from "react";
 import LoginContainer from "../containers/loginContainer";
-const Login = ({ data }: { data: Object }) => {
-  return (
-    <div>
-      <LoginContainer />
-    </div>
-  );
-};
-export const getServerSideProps: GetServerSideProps = async () => {
-  // Fetch data from external API
-  const data1 = await fetch(
-    "https://raw.githubusercontent.com/qjawns0222/caremaker/next%2Bts-6%EC%9D%BC%EC%B0%A8/carddata.json"
-  );
-  const data = await data1.json();
-
-  // Pass data to the page via props
-  return { props: { data } };
+import { js } from "../type";
+const Login = ({ data, name }: { data: js; name: String }) => {
+  const [api, setapi] = useState(data);
+  useEffect(() => {
+    setapi(data);
+  }, [data]);
+  console.log("api" + api.data.idx);
+  return <div>{name}</div>;
 };
 
 export default Login;
