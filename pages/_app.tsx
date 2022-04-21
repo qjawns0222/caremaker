@@ -23,7 +23,7 @@ const App = ({ Component, pageProps }: AppProps) => {
   return (
     <>
       <NavContainer />
-      <Component data={data} {...pageProps} />
+      {data && <Component data={data} {...pageProps} />}
 
       <style jsx global>
         {`
