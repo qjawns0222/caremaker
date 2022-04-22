@@ -1,16 +1,14 @@
-import { AppProps } from "next/app";
-import { ReactNode, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
+import { RootState } from "../store/types/state";
 
-import { da, js } from "../type";
-const Login = ({ data, name }: { data: js; name: String }) => {
-  const [api, setapi] = useState<Array<da>>(data.data);
-  useEffect(() => {
-    setapi(data.data);
-  }, [data]);
-  console.log(api[0].text);
+const Login = () => {
+  const dispatch = useDispatch();
+  const { main } = useSelector((state: RootState) => state);
+
   return (
     <div>
-      {api.map((e, index) => {
+      {main.data.map((e, index) => {
         return (
           <div key={0}>
             <div key={index}>{e.idx}</div>

@@ -4,6 +4,7 @@ import { AppProps } from "next/app";
 import React, { useEffect, useState } from "react";
 import NavContainer from "../containers/navcontainer";
 import num from "../data";
+import { wrapper } from "../store";
 const App = ({ Component, pageProps }: AppProps) => {
   const [data, Setdata] = useState();
   useEffect(() => {
@@ -42,4 +43,4 @@ const App = ({ Component, pageProps }: AppProps) => {
   );
 };
 
-export default App;
+export default wrapper.withRedux(App);
