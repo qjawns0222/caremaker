@@ -1,3 +1,6 @@
+import axios from "axios";
+import { useEffect } from "react";
+import { Increase } from "../actions/actionTypes";
 import { ActionProps, CounterState } from "../types/state";
 
 const initialState: CounterState = {
@@ -21,13 +24,14 @@ const initialState: CounterState = {
   },
 };
 
-const main = (state = initialState, action: ActionProps) => {
+const Main = (state = initialState, action: ActionProps) => {
   switch (action.type) {
-    case "increase":
-      return { ...state, login: "admin" };
+    case Increase:
+      return { ...state, data: (state.data[0].idx = "2") };
     default:
       return state;
   }
 };
 
-export default main;
+export default Main;
+export type mainState = ReturnType<typeof Main>;
