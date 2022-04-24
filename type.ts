@@ -1,21 +1,19 @@
 import { json } from "stream/consumers";
 
 export interface js {
-  data: [
-    {
-      currentform: String;
-      idx: String;
-      maker: String;
-      text: {
-        address: String;
-        content: String;
-        date: String;
-        tags: String;
-        time: String;
-        title: String;
-      };
-    }
-  ];
+  data: Array<{
+    currentform: String;
+    idx: String;
+    maker: String;
+    text: {
+      address: String;
+      content: String;
+      date: String;
+      tags: String[];
+      time: String;
+      title: String;
+    };
+  }>;
   common: { login: String };
 }
 export interface da {
@@ -26,7 +24,7 @@ export interface da {
     address: String;
     content: String;
     date: String;
-    tags: String;
+    tags: String[];
     time: String;
     title: String;
   };

@@ -7,14 +7,10 @@ import NavContainer from "../containers/navcontainer";
 import { wrapper } from "../store";
 import { RootState } from "../store/reducers";
 const App = ({ Component, pageProps }: AppProps) => {
-  const [data, Setdata] = useState();
-  const dispatch = useDispatch();
-  const { main } = useSelector((state: RootState) => state);
-
   return (
     <>
       <NavContainer />
-      {main && <Component data={data} {...pageProps} />}
+      <Component {...pageProps} />
 
       <style jsx global>
         {`

@@ -1,10 +1,8 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
 import { useSelector } from "react-redux";
 import { useDispatch } from "react-redux";
 import { CounterState, RootState } from "../store/types/state";
 
-const Login = () => {
+const Login = ({ name }: { name: String }) => {
   const dispatch = useDispatch();
   const { main }: { main: CounterState } = useSelector(
     (state: RootState) => state
