@@ -2,11 +2,11 @@ import { NextPage } from "next";
 import Login from "../components/login";
 import { js } from "../type";
 
-const loginContainer = ({ data }: { data: js }) => {
-  const name = "권범준";
+const loginContainer = () => {
+  const name: String = "권범준";
   return (
     <div>
-      <Login name={name} data={data} />
+      <Login name={name} />
     </div>
   );
 };
