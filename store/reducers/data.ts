@@ -40,7 +40,7 @@ const initialState: CounterState = {
 const Main = (state = initialState, action: ActionProps) => {
   switch (action.type) {
     case Increase:
-      return { ...state, data: (state.data[0].idx = "2") };
+      return { ...state, data: [...state.data, action.payload] };
     default:
       return state;
   }

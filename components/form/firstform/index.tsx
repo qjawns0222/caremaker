@@ -1,17 +1,40 @@
 import { NextPage } from "next";
+import { MutableRefObject, RefObject } from "react";
 
-const FirstForm: NextPage = () => {
+const FirstForm = ({
+  titleref,
+  dateref,
+  timeref,
+  addressref,
+  contentref,
+  tagsref,
+  finish,
+  reset,
+}: {
+  titleref: RefObject<HTMLInputElement>;
+  dateref: RefObject<HTMLInputElement>;
+  timeref: RefObject<HTMLInputElement>;
+  addressref: RefObject<HTMLInputElement>;
+  contentref: RefObject<HTMLTextAreaElement>;
+  tagsref: RefObject<HTMLInputElement>;
+  finish: () => void;
+  reset: () => void;
+}) => {
   return (
     <div>
       <div className="section">
         <h1 className="title">
-          <input className="titleinput" placeholder="약속이름 작성" />
+          <input
+            className="titleinput"
+            ref={titleref}
+            placeholder="약속이름 작성"
+          />
         </h1>
         <div className="time">
           <div className="timetitle">약속 시간</div>
           <div className="timecontent">
-            <input type="date" className="timedateinput" />
-            <input type="time" className="timetimeinput" />
+            <input type="date" ref={dateref} className="timedateinput" />
+            <input type="time" ref={timeref} className="timetimeinput" />
           </div>
         </div>
         <div className="mapinfo">
@@ -27,6 +50,7 @@ const FirstForm: NextPage = () => {
             지도에
             <h3>
               <input
+                ref={addressref}
                 className="mapdesinput"
                 placeholder="주소 또는 장소 이름 작성"
               />
@@ -38,10 +62,18 @@ const FirstForm: NextPage = () => {
         <div className="content">
           <h3 className="contitle">계획</h3>
           <div className="condes">
-            <textarea className="condesinput" placeholder="세부내용 작성" />
+            <textarea
+              ref={contentref}
+              className="condesinput"
+              placeholder="세부내용 작성"
+            />
           </div>
         </div>
-        <input className="tagsinput" placeholder="#으로 태그를 구분해주세요" />
+        <input
+          ref={tagsref}
+          className="tagsinput"
+          placeholder="#으로 태그를 구분해주세요"
+        />
         <div className="tags">
           <div className="tag">예시</div>
           <div className="tag">예시</div>
@@ -49,10 +81,10 @@ const FirstForm: NextPage = () => {
         </div>
         <div className="buttons">
           <div className="reset">
-            <button>초기화</button>
+            <button onClick={reset}>초기화</button>
           </div>
           <div className="finish">
-            <button>완료</button>
+            <button onClick={finish}>완료</button>
           </div>
         </div>
       </div>

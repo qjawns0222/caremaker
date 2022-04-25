@@ -24,7 +24,7 @@ export interface da {
     address: String;
     content: String;
     date: String;
-    tags: String[];
+    tags: String[] | undefined;
     time: String;
     title: String;
   };
