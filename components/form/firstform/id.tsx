@@ -1,8 +1,9 @@
 import { GetServerSideProps, NextPage } from "next";
 import { useRouter } from "next/router";
+import { CounterState } from "../../../store/types/state";
 import { da, js } from "../../../type";
 
-const Firstid = ({ main }: { main: js }) => {
+const Firstid = ({ main }: { main: CounterState }) => {
   const { query } = useRouter();
   const id = query.id;
 
@@ -44,7 +45,7 @@ const Firstid = ({ main }: { main: js }) => {
                   <div className="condes">{res.text.content}</div>
                 </div>
                 <div className="tags">
-                  {res.text.tags.map((res, index) => {
+                  {res.text.tags?.map((res, index) => {
                     return (
                       <div key={`tags${index}`} className="tag">
                         {res}

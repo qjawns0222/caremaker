@@ -3,7 +3,7 @@ import { json } from "stream/consumers";
 export interface js {
   data: Array<{
     currentform: String;
-    idx: String;
+    idx: string;
     maker: String;
     text: {
       address: String;
@@ -18,7 +18,7 @@ export interface js {
 }
 export interface da {
   currentform: String;
-  idx: String;
+  idx: string;
   maker: String;
   text: {
     address: String;

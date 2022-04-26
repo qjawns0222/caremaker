@@ -1,7 +1,19 @@
 import { NextPage } from "next";
 import Link from "next/link";
+import { MouseEventHandler } from "react";
+import { CounterState } from "../store/types/state";
+import { da } from "../type";
 
-const MyPage: NextPage = () => {
+const MyPage = ({
+  main,
+  del,
+}: {
+  main: CounterState;
+  del: (e: EventTarget) => void;
+}) => {
+  const Delete = (e: React.MouseEvent<HTMLButtonElement>) => {
+    del(e.target);
+  };
   return (
     <div className="section">
       <div className="welcome">
@@ -12,56 +24,33 @@ const MyPage: NextPage = () => {
       <div className="cards">
         <div className="firstform">
           <div className="firsttitle">약속</div>
-          <div className="firstlists">
-            <div className="firstlist">
-              <div className="url">
-                <Link href="/login">
-                  <a>www.naver.com</a>
-                </Link>
-              </div>
-              <div className="button">
-                <div className="delbutton">
-                  <button>삭제</button>
+
+          {main.data.map((state: da, index: number) => {
+            if (state.maker == main.common.login) {
+              return (
+                <div key={index} className="firstlists">
+                  <div className="firstlist">
+                    <div className="url">
+                      <Link href={`/form/firstform/${state.idx}`}>
+                        <a>{`http://localhost:3000/form/firstform/${state.idx}`}</a>
+                      </Link>
+                    </div>
+                    <div className="button">
+                      <div className="delbutton">
+                        <button id={state.idx} onClick={Delete}>
+                          삭제
+                        </button>
+                      </div>
+                      <div className="updatebutton">
+                        <button>수정</button>
+                      </div>
+                    </div>
+                  </div>
+                  <hr />
                 </div>
-                <div className="updatebutton">
-                  <button>수정</button>
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div className="firstlist">
-              <div className="url">
-                <Link href="/login">
-                  <a>www.naver.com</a>
-                </Link>
-              </div>
-              <div className="button">
-                <div className="delbutton">
-                  <button>삭제</button>
-                </div>
-                <div className="updatebutton">
-                  <button>수정</button>
-                </div>
-              </div>
-            </div>
-            <hr />
-            <div className="firstlist">
-              <div className="url">
-                <Link href="/login">
-                  <a>www.naver.com</a>
-                </Link>
-              </div>
-              <div className="button">
-                <div className="delbutton">
-                  <button>삭제</button>
-                </div>
-                <div className="updatebutton">
-                  <button>수정</button>
-                </div>
-              </div>
-            </div>
-            <hr />
-          </div>
+              );
+            }
+          })}
         </div>
       </div>
       <style jsx>

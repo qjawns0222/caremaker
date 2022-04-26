@@ -12,6 +12,7 @@ const FirstindexContainer = () => {
   const { main }: { main: CounterState } = useSelector(
     (state: RootState) => state
   );
+
   const titleref = useRef<HTMLInputElement>(null);
   const dateref = useRef<HTMLInputElement>(null);
   const timeref = useRef<HTMLInputElement>(null);
@@ -48,7 +49,7 @@ const FirstindexContainer = () => {
       tagarr?.splice(0, 1);
 
       const data: da = {
-        idx: (main.data.length + 1).toString(),
+        idx: parseInt(main.data[main.data.length - 1].idx).toString(),
         currentform: "first",
         maker: main.common.login,
         text: {

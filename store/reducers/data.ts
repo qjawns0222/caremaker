@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { Increase } from "../actions/actionTypes";
+import { Delete, Increase } from "../actions/actionTypes";
 import { ActionProps, CounterState } from "../types/state";
 
 const initialState: CounterState = {
@@ -33,7 +33,7 @@ const initialState: CounterState = {
     },
   ],
   common: {
-    login: "",
+    login: "admin",
   },
 };
 
@@ -41,6 +41,15 @@ const Main = (state = initialState, action: ActionProps) => {
   switch (action.type) {
     case Increase:
       return { ...state, data: [...state.data, action.payload] };
+    case Delete:
+      state.data = state.data.filter((state) => {
+        console.log(state.idx != action.payload);
+        if (state.idx != action.payload) {
+          return state;
+        }
+      });
+      console.log(state);
+      return { ...state };
     default:
       return state;
   }

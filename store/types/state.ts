@@ -2,7 +2,7 @@ import { da } from "../../type";
 
 export interface ActionProps {
   type: string;
-  payload: da | null;
+  payload: da | string | null;
 }
 
 export interface CounterState {
