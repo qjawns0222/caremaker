@@ -6,6 +6,7 @@ import { useDispatch } from "react-redux";
 import NavContainer from "../containers/navcontainer";
 
 import { wrapper } from "../store";
+import { LOGIN } from "../store/actions/action";
 import { RootState } from "../store/reducers";
 const App = ({ Component, pageProps }: AppProps) => {
   return (

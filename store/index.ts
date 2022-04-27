@@ -8,8 +8,11 @@ import {
 } from "redux";
 import reducers from "./reducers";
 import { MakeStore, createWrapper } from "next-redux-wrapper";
-import { mainState } from "./reducers/data";
+import createSagaMiddleware from "redux-saga";
 import { ActionProps, CounterState } from "./types/state";
+import { configureStore } from "@reduxjs/toolkit";
+import { initialState } from "./reducers/data";
+import rootSaga from "./reducers/Sagas";
 
 const bindMiddleware = (middleware: Middleware[]): StoreEnhancer => {
   if (process.env.NODE_ENV !== "production") {
@@ -27,7 +30,17 @@ const makestore: MakeStore<
     ActionProps
   >
 > = () => {
-  const store = createStore(reducers, {}, bindMiddleware([]));
+  const sagamiddleware = createSagaMiddleware();
+
+  const middlewares = [sagamiddleware];
+
+  const store = configureStore({
+    reducer: reducers,
+    middleware: [sagamiddleware],
+    devTools: process.env.NODE_ENV !== "production",
+    // 만약 SSR로 넘어온 정보가 있다면 여기에 담아주면 됨.
+  });
+  sagamiddleware.run(rootSaga);
 
   return store;
 };

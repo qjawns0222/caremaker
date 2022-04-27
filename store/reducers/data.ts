@@ -1,9 +1,15 @@
 import axios from "axios";
 import { useEffect } from "react";
-import { Delete, Increase } from "../actions/actionTypes";
+import {
+  Delete,
+  Increase,
+  Login_FAIL,
+  Login_PENDING,
+  Login_SUCCESS,
+} from "../actions/actionTypes";
 import { ActionProps, CounterState } from "../types/state";
 
-const initialState: CounterState = {
+export const initialState: CounterState = {
   data: [
     {
       idx: "1",
@@ -43,13 +49,22 @@ const Main = (state = initialState, action: ActionProps) => {
       return { ...state, data: [...state.data, action.payload] };
     case Delete:
       state.data = state.data.filter((state) => {
-        console.log(state.idx != action.payload);
         if (state.idx != action.payload) {
           return state;
         }
       });
-      console.log(state);
       return { ...state };
+    case Login_PENDING:
+      console.log("pendig");
+      console.log(action.payload);
+      return state;
+    case Login_SUCCESS:
+      console.log("success");
+      console.log(action.payload);
+      return state;
+    case Login_FAIL:
+      console.log(action.payload);
+      return state;
     default:
       return state;
   }

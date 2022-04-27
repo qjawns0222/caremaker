@@ -17,7 +17,7 @@ const MyPage = ({
   return (
     <div className="section">
       <div className="welcome">
-        <div className="nick">아이디 </div>
+        <div className="nick">{main.common.login} </div>
         <div className="content">님 어서오세요.</div>
       </div>
       <hr className="welcomeline" />
