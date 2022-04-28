@@ -3,9 +3,9 @@ import { LoginData } from "../types/state";
 import {
   Delete,
   Increase,
-  Login_FAIL,
-  Login_PENDING,
-  Login_SUCCESS,
+  LOGIN_FAIL,
+  LOGIN_PENDING,
+  LOGIN_SUCCESS,
 } from "./actionTypes";
 
 export const dataadd = (payload: da | undefined) => {
@@ -22,19 +22,18 @@ export const datadel = (payload: String | undefined) => {
 };
 export const LOGIN = (payload: LoginData | undefined) => {
   return {
-    type: Login_PENDING,
+    type: LOGIN_PENDING,
     payload,
   };
 };
-export const LOGINSUCCESS = (payload: String | undefined) => {
+export const LOGINSUCCESS = (payload: LoginData) => {
   return {
-    type: Login_SUCCESS,
+    type: LOGIN_SUCCESS,
     payload,
   };
 };
-export const LOGINFAIL = (payload: String | undefined) => {
+export const LOGINFAIL = () => {
   return {
-    type: Login_FAIL,
-    payload,
+    type: LOGIN_FAIL,
   };
 };

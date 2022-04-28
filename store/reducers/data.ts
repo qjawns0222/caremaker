@@ -3,11 +3,11 @@ import { useEffect } from "react";
 import {
   Delete,
   Increase,
-  Login_FAIL,
-  Login_PENDING,
-  Login_SUCCESS,
+  LOGIN_FAIL,
+  LOGIN_PENDING,
+  LOGIN_SUCCESS,
 } from "../actions/actionTypes";
-import { ActionProps, CounterState } from "../types/state";
+import { ActionProps, CounterState, LoginData } from "../types/state";
 
 export const initialState: CounterState = {
   data: [
@@ -54,19 +54,22 @@ const Main = (state = initialState, action: ActionProps) => {
         }
       });
       return { ...state };
-    case Login_PENDING:
-      console.log("pendig");
-      console.log(action.payload);
-      return state;
-    case Login_SUCCESS:
-      console.log("success");
-      console.log(action.payload);
-      return state;
-    case Login_FAIL:
-      console.log(action.payload);
-      return state;
+    case LOGIN_PENDING:
+      return { ...state };
+    case LOGIN_SUCCESS:
+      if ((<LoginData>action.payload).password == "true") {
+        console.log("suc");
+        state.common.login = (<LoginData>action.payload).id;
+      }
+      console.log(`success:%{state}`);
+      return { ...state };
+
+    case LOGIN_FAIL:
+      console.log("로그인 실패");
+      alert("로그인 실패");
+      return { ...state };
     default:
-      return state;
+      return { ...state };
   }
 };
 

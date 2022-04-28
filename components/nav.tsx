@@ -8,6 +8,7 @@ const Nav: NextPage = () => {
   const { main }: { main: CounterState } = useSelector(
     (state: RootState) => state
   );
+
   return (
     <div className="header">
       <div className="logo">

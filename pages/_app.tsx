@@ -8,7 +8,14 @@ import NavContainer from "../containers/navcontainer";
 import { wrapper } from "../store";
 import { LOGIN } from "../store/actions/action";
 import { RootState } from "../store/reducers";
+import { CounterState } from "../store/types/state";
 const App = ({ Component, pageProps }: AppProps) => {
+  const { main }: { main: CounterState } = useSelector(
+    (state: RootState) => state
+  );
+  useEffect(() => {
+    console.log(main);
+  }, [main]);
   return (
     <>
       <NavContainer />

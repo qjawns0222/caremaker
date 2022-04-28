@@ -38,7 +38,6 @@ const makestore: MakeStore<
     reducer: reducers,
     middleware: [sagamiddleware],
     devTools: process.env.NODE_ENV !== "production",
-    // 만약 SSR로 넘어온 정보가 있다면 여기에 담아주면 됨.
   });
   sagamiddleware.run(rootSaga);
 

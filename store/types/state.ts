@@ -2,7 +2,7 @@ import { da } from "../../type";
 
 export interface ActionProps {
   type: string;
-  payload: da | string | LoginData | null;
+  payload: da | string | LoginData[] | LoginData;
 }
 
 export interface CounterState {
@@ -16,4 +16,10 @@ export type RootState = {
 export type LoginData = {
   id: string;
   password: string;
+};
+export type LoginJson = {
+  login: LoginData[];
+};
+export type inputlogin = {
+  login: String;
 };
