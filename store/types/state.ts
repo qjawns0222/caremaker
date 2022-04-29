@@ -2,12 +2,12 @@ import { da } from "../../type";
 
 export interface ActionProps {
   type: string;
-  payload: da | string | LoginData[] | LoginData;
+  payload: da | string | LoginData;
 }
 
 export interface CounterState {
   data: Array<da>;
-  common: { login: String };
+  common: { login: string };
 }
 
 export type RootState = {

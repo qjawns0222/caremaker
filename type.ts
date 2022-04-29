@@ -17,15 +17,15 @@ export interface js {
   common: { login: String };
 }
 export interface da {
-  currentform: String;
+  currentform: string;
   idx: string;
-  maker: String;
+  maker: string;
   text: {
-    address: String;
-    content: String;
-    date: String;
-    tags: String[] | undefined;
-    time: String;
-    title: String;
+    address: string;
+    content: string;
+    date: string;
+    tags: string[] | undefined;
+    time: string;
+    title: string;
   };
 }

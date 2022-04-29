@@ -1,10 +1,9 @@
-import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { useSelector } from "react-redux";
 import { CounterState, RootState } from "../store/types/state";
 
-const Nav: NextPage = () => {
+const Nav = ({ logout }: { logout: () => void }) => {
   const { main }: { main: CounterState } = useSelector(
     (state: RootState) => state
   );
@@ -42,9 +41,13 @@ const Nav: NextPage = () => {
       </div>
       <div className="loginbar">
         <div className="login">
-          <Link href="/login">
-            <a>{-1 > 0 ? "로그인" : main.common.login}</a>
-          </Link>
+          {main.common.login == "admin" ? (
+            <Link href="/login">
+              <a>로그인</a>
+            </Link>
+          ) : (
+            <div onClick={logout}> {main.common.login}</div>
+          )}
         </div>
       </div>
       <style jsx>

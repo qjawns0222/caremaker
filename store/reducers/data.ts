@@ -1,11 +1,15 @@
 import axios from "axios";
 import { useEffect } from "react";
+import data from ".";
+import { da } from "../../type";
 import {
   Delete,
   Increase,
   LOGIN_FAIL,
   LOGIN_PENDING,
   LOGIN_SUCCESS,
+  LOGOUT,
+  Update,
 } from "../actions/actionTypes";
 import { ActionProps, CounterState, LoginData } from "../types/state";
 
@@ -57,17 +61,24 @@ const Main = (state = initialState, action: ActionProps) => {
     case LOGIN_PENDING:
       return { ...state };
     case LOGIN_SUCCESS:
-      if ((<LoginData>action.payload).password == "true") {
-        console.log("suc");
-        state.common.login = (<LoginData>action.payload).id;
-      }
-      console.log(`success:%{state}`);
+      state.common.login = (<LoginData>action.payload).id;
       return { ...state };
-
     case LOGIN_FAIL:
       console.log("로그인 실패");
       alert("로그인 실패");
       return { ...state };
+    case LOGOUT:
+      console.log("로그아웃");
+      return { ...state, common: { login: "admin" } };
+    case Update:
+      state.data = <da[]>state.data.map((res) => {
+        if (res.idx == (action.payload as da).idx) {
+          return action.payload;
+        }
+        return res;
+      });
+
+      return state;
     default:
       return { ...state };
   }

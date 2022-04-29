@@ -6,6 +6,8 @@ import {
   LOGIN_FAIL,
   LOGIN_PENDING,
   LOGIN_SUCCESS,
+  LOGOUT,
+  Update,
 } from "./actionTypes";
 
 export const dataadd = (payload: da | undefined) => {
@@ -17,6 +19,12 @@ export const dataadd = (payload: da | undefined) => {
 export const datadel = (payload: String | undefined) => {
   return {
     type: Delete,
+    payload,
+  };
+};
+export const dataupdate = (payload: da) => {
+  return {
+    type: Update,
     payload,
   };
 };
@@ -35,5 +43,10 @@ export const LOGINSUCCESS = (payload: LoginData) => {
 export const LOGINFAIL = () => {
   return {
     type: LOGIN_FAIL,
+  };
+};
+export const reset = () => {
+  return {
+    type: LOGOUT,
   };
 };

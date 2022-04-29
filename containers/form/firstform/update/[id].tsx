@@ -1,17 +1,39 @@
-import { useRef } from "react";
-import { useSelector } from "react-redux";
+import { useRouter } from "next/router";
+import { useEffect, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
-
-import Index from "../../../components/form/firstform/index";
-import { dataadd } from "../../../store/actions/action";
-import { RootState } from "../../../store/reducers";
-import { CounterState } from "../../../store/types/state";
-import { da } from "../../../type";
-const FirstindexContainer = () => {
+import { useSelector } from "react-redux";
+import Modify from "../../../../components/form/firstform/update/[id]";
+import { dataupdate } from "../../../../store/actions/action";
+import { CounterState, RootState } from "../../../../store/types/state";
+import { da } from "../../../../type";
+const ModifyContainer = () => {
   const dispatch = useDispatch();
+
   const { main }: { main: CounterState } = useSelector(
     (state: RootState) => state
   );
+  const { query } = useRouter();
+  const id: String | string[] | undefined = query.id;
+  const [title, setTitle] = useState<string>();
+  const [date, setDate] = useState<string>();
+  const [time, setTime] = useState<string>();
+  const [address, setAddress] = useState<string>();
+  const [content, setContent] = useState<string>();
+  const [tags, setTags] = useState<string | undefined>();
+  useEffect(() => {
+    main.data.find((res) => {
+      if (res.idx == id) {
+        titleref.current!.value = res.text.title;
+        dateref.current!.value = res.text.date;
+        timeref.current!.value = res.text.time;
+        addressref.current!.value = res.text.address;
+        contentref.current!.value = res.text.content;
+        tagsref.current!.value = "#" + res.text.tags?.join("#");
+
+        return res;
+      }
+    });
+  }, [main.data, id]);
 
   const titleref = useRef<HTMLInputElement>(null);
   const dateref = useRef<HTMLInputElement>(null);
@@ -31,15 +53,10 @@ const FirstindexContainer = () => {
     console.log(main.data);
     const data: da | undefined = makedata();
     if (data != undefined) {
-      dispatch(dataadd(data));
+      dispatch(dataupdate(data));
       if (main.common.login == "admin") {
-        alert(
-          `id를 기억하세요 id:${(
-            parseInt(main.data[main.data.length - 1].idx) + 1
-          ).toString()}`
-        );
+        alert(`id를 기억하세요 id:${id}`);
       }
-      reset();
     } else {
       alert("태그 제외 모든 빈칸을 넣어주세요");
     }
@@ -56,7 +73,7 @@ const FirstindexContainer = () => {
       tagarr?.splice(0, 1);
 
       const data: da = {
-        idx: (parseInt(main.data[main.data.length - 1].idx) + 1).toString(),
+        idx: query.id!.toString(),
         currentform: "first",
         maker: main.common.login,
         text: {
@@ -73,7 +90,8 @@ const FirstindexContainer = () => {
   };
   return (
     <div>
-      <Index
+      <Modify
+        main={main}
         titleref={titleref}
         dateref={dateref}
         timeref={timeref}
@@ -82,9 +100,10 @@ const FirstindexContainer = () => {
         tagsref={tagsref}
         finish={finish}
         reset={reset}
+        id={id}
+        title={title}
       />
     </div>
   );
 };
-
-export default FirstindexContainer;
+export default ModifyContainer;
