@@ -14,12 +14,7 @@ const ModifyContainer = () => {
   );
   const { query } = useRouter();
   const id: String | string[] | undefined = query.id;
-  const [title, setTitle] = useState<string>();
-  const [date, setDate] = useState<string>();
-  const [time, setTime] = useState<string>();
-  const [address, setAddress] = useState<string>();
-  const [content, setContent] = useState<string>();
-  const [tags, setTags] = useState<string | undefined>();
+
   useEffect(() => {
     main.data.find((res) => {
       if (res.idx == id) {
@@ -101,7 +96,6 @@ const ModifyContainer = () => {
         finish={finish}
         reset={reset}
         id={id}
-        title={title}
       />
     </div>
   );

@@ -13,7 +13,6 @@ const Modify = ({
   reset,
   main,
   id,
-  title,
 }: {
   titleref: RefObject<HTMLInputElement>;
   dateref: RefObject<HTMLInputElement>;
@@ -25,7 +24,6 @@ const Modify = ({
   reset: () => void;
   main: CounterState;
   id: String | string[] | undefined;
-  title: string | undefined;
 }) => {
   return (
     <div>
@@ -38,7 +36,6 @@ const Modify = ({
                   <input
                     className="titleinput"
                     ref={titleref}
-                    value={title}
                     placeholder="약속이름 작성"
                   />
                 </h1>
