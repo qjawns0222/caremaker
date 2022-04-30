@@ -1,3 +1,4 @@
+import { NextRouter } from "next/router";
 import { da } from "../../type";
 import { LoginData } from "../types/state";
 import {
@@ -28,10 +29,11 @@ export const dataupdate = (payload: da) => {
     payload,
   };
 };
-export const LOGIN = (payload: LoginData | undefined) => {
+export const LOGIN = (payload: LoginData | undefined, router: NextRouter) => {
   return {
     type: LOGIN_PENDING,
     payload,
+    router,
   };
 };
 export const LOGINSUCCESS = (payload: LoginData) => {

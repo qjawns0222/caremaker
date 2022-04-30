@@ -37,15 +37,20 @@ const ModifyContainer = () => {
   const contentref = useRef<HTMLTextAreaElement>(null);
   const tagsref = useRef<HTMLInputElement>(null);
   const reset: () => void = () => {
-    titleref.current!.value = "";
-    dateref.current!.value = "";
-    timeref.current!.value = "";
-    addressref.current!.value = "";
-    contentref.current!.value = "";
-    tagsref.current!.value = "";
+    main.data.find((res) => {
+      if (res.idx == id) {
+        titleref.current!.value = res.text.title;
+        dateref.current!.value = res.text.date;
+        timeref.current!.value = res.text.time;
+        addressref.current!.value = res.text.address;
+        contentref.current!.value = res.text.content;
+        tagsref.current!.value = "#" + res.text.tags?.join("#");
+
+        return res;
+      }
+    });
   };
   const finish: () => void = () => {
-    console.log(main.data);
     const data: da | undefined = makedata();
     if (data != undefined) {
       dispatch(dataupdate(data));

@@ -278,7 +278,6 @@ const Modify = ({
                   }
                 `}
               </style>
-              ;
             </div>
           );
         }

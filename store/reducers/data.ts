@@ -1,4 +1,5 @@
 import axios from "axios";
+import { useRouter } from "next/router";
 import { useEffect } from "react";
 import data from ".";
 import { da } from "../../type";
@@ -62,6 +63,7 @@ const Main = (state = initialState, action: ActionProps) => {
       return { ...state };
     case LOGIN_SUCCESS:
       state.common.login = (<LoginData>action.payload).id;
+      action.router.push("/");
       return { ...state };
     case LOGIN_FAIL:
       console.log("로그인 실패");

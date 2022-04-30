@@ -30,9 +30,7 @@ const makestore: MakeStore<
     ActionProps
   >
 > = () => {
-  const sagamiddleware = createSagaMiddleware();
-
-  const middlewares = [sagamiddleware];
+  const sagamiddleware = createSagaMiddleware({});
 
   const store = configureStore({
     reducer: reducers,

@@ -1,8 +1,10 @@
+import { NextRouter } from "next/router";
 import { da } from "../../type";
 
 export interface ActionProps {
   type: string;
   payload: da | string | LoginData;
+  router: NextRouter;
 }
 
 export interface CounterState {

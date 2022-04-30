@@ -3,7 +3,13 @@ import { useRouter } from "next/router";
 import { CounterState } from "../../../store/types/state";
 import { da, js } from "../../../type";
 
-const Firstid = ({ main }: { main: CounterState }) => {
+const Firstid = ({
+  main,
+  update,
+}: {
+  main: CounterState;
+  update: () => void;
+}) => {
   const { query } = useRouter();
   const id = query.id;
 
@@ -55,7 +61,7 @@ const Firstid = ({ main }: { main: CounterState }) => {
                 </div>
                 <div className="buttons">
                   <div className="reset">
-                    <button>수정</button>
+                    <button onClick={update}>수정</button>
                   </div>
                   <div className="finish">
                     <button>완료</button>

@@ -1,18 +1,22 @@
-import { NextPage } from "next";
 import Link from "next/link";
-import { MouseEventHandler } from "react";
+import { MouseEvent } from "react";
 import { CounterState } from "../store/types/state";
 import { da } from "../type";
 
 const MyPage = ({
   main,
   del,
+  update,
 }: {
   main: CounterState;
   del: (e: EventTarget) => void;
+  update: (e: EventTarget) => void;
 }) => {
   const Delete = (e: React.MouseEvent<HTMLButtonElement>) => {
     del(e.target);
+  };
+  const updatepage = (e: React.MouseEvent<HTMLButtonElement>) => {
+    update(e.target);
   };
   return (
     <div className="section">
@@ -42,7 +46,9 @@ const MyPage = ({
                         </button>
                       </div>
                       <div className="updatebutton">
-                        <button>수정</button>
+                        <button id={state.idx} onClick={updatepage}>
+                          수정
+                        </button>
                       </div>
                     </div>
                   </div>

@@ -1,6 +1,13 @@
 import axios from "axios";
 import { resolveSoa } from "dns";
-import { call, put, takeEvery, takeLatest } from "redux-saga/effects";
+import { NextRouter } from "next/router";
+import {
+  call,
+  getContext,
+  put,
+  takeEvery,
+  takeLatest,
+} from "redux-saga/effects";
 import { LOGIN_PENDING, LOGIN_SUCCESS } from "../actions/actionTypes";
 import { LoginData, LoginJson } from "../types/state";
 
@@ -11,7 +18,15 @@ const checkdata = async () => {
 
   return res.data;
 };
-function* checklogin({ type, payload }: { type: String; payload: LoginData }) {
+function* checklogin({
+  type,
+  payload,
+  router,
+}: {
+  type: String;
+  payload: LoginData;
+  router: NextRouter;
+}) {
   try {
     const data: LoginJson = yield call(checkdata);
     const result: LoginData | undefined = data.login.find((res: LoginData) => {
@@ -20,7 +35,8 @@ function* checklogin({ type, payload }: { type: String; payload: LoginData }) {
       }
     });
     if (result) {
-      yield put({ type: LOGIN_SUCCESS, payload });
+      yield put({ type: LOGIN_SUCCESS, payload, router });
+      const history = getContext("history");
     } else {
       alert("아이디와 비밀번호 확인해주세요");
     }
