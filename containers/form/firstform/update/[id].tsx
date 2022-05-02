@@ -80,7 +80,7 @@ const ModifyContainer = () => {
           address: addressref.current?.value,
           content: contentref.current?.value,
           date: dateref.current?.value,
-          tags: tagarr,
+          tags: tagarr ? tagarr : [],
           time: timeref.current?.value,
           title: titleref.current?.value,
         },
