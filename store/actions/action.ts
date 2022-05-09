@@ -17,7 +17,7 @@ export const dataadd = (payload: da | undefined) => {
     payload,
   };
 };
-export const datadel = (payload: String | undefined) => {
+export const datadel = (payload: String) => {
   return {
     type: Delete,
     payload,
