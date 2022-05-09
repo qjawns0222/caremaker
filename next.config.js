@@ -1,5 +1,8 @@
-/** @type {import('next').NextConfig} */
+const debug = process.env.NODE_ENV !== "production";
+const name = "caremaker";
+
 const nextConfig = {
+  assetPrefix: !debug ? `/${name}/` : "",
   reactStrictMode: true,
   images: {
     domains: ["github.com", "raw.githubusercontent.com"],
@@ -7,10 +10,3 @@ const nextConfig = {
 };
 
 module.exports = nextConfig;
-
-const debug = process.env.NODE_ENV !== "production";
-const name = "caremaker";
-
-module.exports = {
-  assetPrefix: !debug ? `/${name}/` : "",
-};
