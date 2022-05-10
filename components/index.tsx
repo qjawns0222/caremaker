@@ -1,6 +1,7 @@
 import type { NextPage } from "next";
 import Image from "next/image";
 import data from "../carddata.json";
+import { imgLoader } from "../imgLoader";
 
 const Home: NextPage = () => {
   return (
@@ -9,6 +10,7 @@ const Home: NextPage = () => {
         <div className="title">모바일 초대장</div>
         <div className="image">
           <Image
+            loader={imgLoader}
             src="https://raw.githubusercontent.com/qjawns0222/portfolio/main/img/%ED%8C%8C%EB%9E%80%EB%B6%88-%EB%A1%9C%EA%B3%A0.ico"
             alt="logo"
             width="500px"
