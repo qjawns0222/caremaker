@@ -4,7 +4,7 @@ import { useSelector } from "react-redux";
 import { imgLoader } from "../imgLoader";
 import { CounterState, RootState } from "../store/types/state";
 
-const Nav = ({ logout }: { logout: () => void }) => {
+const Nav = ({ logout, path }: { logout: () => void; path: String }) => {
   const { main }: { main: CounterState } = useSelector(
     (state: RootState) => state
   );
@@ -27,17 +27,21 @@ const Nav = ({ logout }: { logout: () => void }) => {
       <div className="navbar">
         <div className="home">
           <Link href="/">
-            <a>메인화면</a>
+            <a className={path == "/" ? "active" : "nonactive"}>메인화면</a>
           </Link>
         </div>
         <div className="card">
           <Link href="/form">
-            <a>카드 고르기</a>
+            <a className={path == "/form" ? "active" : "nonactive"}>
+              카드 고르기
+            </a>
           </Link>
         </div>
         <div className="mypage">
           <Link href="/mypage">
-            <a>마이페이지</a>
+            <a className={path == "/mypage" ? "active" : "nonactive"}>
+              마이페이지
+            </a>
           </Link>
         </div>
       </div>
@@ -89,6 +93,9 @@ const Nav = ({ logout }: { logout: () => void }) => {
             display: flex;
             justify-content: center;
             align-items: center;
+          }
+          .active {
+            color: red;
           }
         `}
       </style>
