@@ -1,7 +1,8 @@
 import { NextPage } from "next";
 import Image from "next/image";
 import Link from "next/link";
-
+import { imgLoader } from "../../imgLoader";
+import img from "../../image/파란불.ico";
 const make: NextPage = () => {
   return (
     <div>
@@ -12,7 +13,8 @@ const make: NextPage = () => {
             <a className="form">
               <div className="image">
                 <Image
-                  src="https://raw.githubusercontent.com/qjawns0222/portfolio/main/img/%ED%8C%8C%EB%9E%80%EB%B6%88-%EB%A1%9C%EA%B3%A0.ico"
+                  loader={imgLoader}
+                  src={img}
                   alt="promise"
                   width="100px"
                   height="100px"

@@ -3,6 +3,7 @@ import Link from "next/link";
 import { useSelector } from "react-redux";
 import { imgLoader } from "../imgLoader";
 import { CounterState, RootState } from "../store/types/state";
+import img from "../image/파란불.ico";
 
 const Nav = ({ logout, path }: { logout: () => void; path: String }) => {
   const { main }: { main: CounterState } = useSelector(
@@ -16,7 +17,7 @@ const Nav = ({ logout, path }: { logout: () => void; path: String }) => {
           <a>
             <Image
               loader={imgLoader}
-              src="https://raw.githubusercontent.com/qjawns0222/portfolio/main/img/%ED%8C%8C%EB%9E%80%EB%B6%88-%EB%A1%9C%EA%B3%A0.ico"
+              src={img}
               alt="logo"
               width="70px"
               height="70px"
